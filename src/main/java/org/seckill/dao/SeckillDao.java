@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wenjing on 2017/1/8.
@@ -34,6 +35,9 @@ public interface SeckillDao {
      * @return
      */
     List<Seckill> queryAll(@Param("offet")int offet, @Param("limit") int limit);
+
+
+    void killByProcedure(Map<String, Object> paramMap);
 
 
 

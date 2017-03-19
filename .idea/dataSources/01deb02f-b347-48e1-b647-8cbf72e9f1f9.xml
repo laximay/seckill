@@ -6,104 +6,121 @@
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <schema id="3" parent="1" name="db_lxpwoer_test"/>
-    <schema id="4" parent="1" name="information_schema"/>
-    <schema id="5" parent="1" name="mysql"/>
-    <schema id="6" parent="1" name="performance_schema"/>
-    <schema id="7" parent="1" name="sys"/>
-    <schema id="8" parent="1" name="testdb"/>
-    <table id="9" parent="2" name="seckill">
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <schema id="7" parent="1" name="testdb"/>
+    <schema id="8" parent="1" name="dw_spider"/>
+    <schema id="9" parent="1" name="nutch"/>
+    <table id="10" parent="2" name="seckill">
       <Comment>秒杀库存表</Comment>
     </table>
-    <table id="10" parent="2" name="success_killed">
+    <table id="11" parent="2" name="success_killed">
       <Comment>秒杀成功存表</Comment>
     </table>
-    <column id="11" parent="9" name="seckill_id">
+    <routine id="12" parent="2" name="execute_seckill">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <column id="13" parent="10" name="seckill_id">
       <Position>1</Position>
       <Comment>商品库存id</Comment>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="12" parent="9" name="name">
+    <column id="14" parent="10" name="name">
       <Position>2</Position>
       <Comment>商品名称</Comment>
       <DataType>varchar(120)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="13" parent="9" name="number">
+    <column id="15" parent="10" name="number">
       <Position>3</Position>
       <Comment>库存数量</Comment>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="14" parent="9" name="start_time">
+    <column id="16" parent="10" name="start_time">
       <Position>4</Position>
       <Comment>秒杀开始时间</Comment>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <column id="15" parent="9" name="end_time">
+    <column id="17" parent="10" name="end_time">
       <Position>5</Position>
       <Comment>秒杀结束时间</Comment>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <column id="16" parent="9" name="create_time">
+    <column id="18" parent="10" name="create_time">
       <Position>6</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <index id="17" parent="9" name="idx_create_time">
+    <index id="19" parent="10" name="idx_create_time">
       <ColNames>create_time</ColNames>
     </index>
-    <index id="18" parent="9" name="idx_end_time">
+    <index id="20" parent="10" name="idx_end_time">
       <ColNames>end_time</ColNames>
     </index>
-    <index id="19" parent="9" name="idx_start_time">
+    <index id="21" parent="10" name="idx_start_time">
       <ColNames>start_time</ColNames>
     </index>
-    <key id="20" parent="9" name="PRIMARY">
+    <key id="22" parent="10" name="PRIMARY">
       <ColNames>seckill_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="21" parent="10" name="seckill_id">
+    <column id="23" parent="11" name="seckill_id">
       <Position>1</Position>
       <Comment>秒杀商品id</Comment>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="10" name="user_phone">
+    <column id="24" parent="11" name="user_phone">
       <Position>2</Position>
       <Comment>用户手机号</Comment>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="10" name="state">
+    <column id="25" parent="11" name="state">
       <Position>3</Position>
       <Comment>状态标示：-1：无效，0：成功，1：已付款</Comment>
       <DataType>tinyint(4)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;-1&apos;</DefaultExpression>
     </column>
-    <column id="24" parent="10" name="create_time">
+    <column id="26" parent="11" name="create_time">
       <Position>4</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <index id="25" parent="10" name="idex_create_time">
+    <index id="27" parent="11" name="idex_create_time">
       <ColNames>create_time</ColNames>
     </index>
-    <key id="26" parent="10" name="PRIMARY">
+    <key id="28" parent="11" name="PRIMARY">
       <ColNames>seckill_id
 user_phone</ColNames>
       <Primary>1</Primary>
     </key>
+    <argument id="29" parent="12" name="v_seckill_id">
+      <DataType>bigint(20)|0</DataType>
+    </argument>
+    <argument id="30" parent="12" name="v_phone">
+      <DataType>bigint(20)|0</DataType>
+    </argument>
+    <argument id="31" parent="12" name="v_kill_time">
+      <DataType>timestamp|0</DataType>
+    </argument>
+    <argument id="32" parent="12" name="r_result">
+      <ArgumentDirection>O</ArgumentDirection>
+      <DataType>int(11)|0</DataType>
+    </argument>
   </database-model>
 </dataSource>
